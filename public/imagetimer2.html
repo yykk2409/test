@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>テスト2</title>
+  <style>
+    /* 画像のスタイル */
+    #imageContainer {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    #countdown {
+      font-size: 24px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="imageContainer">
+    <img src="" alt="画像" id="image" style="display: none;">
+  </div>
+  <button id = "timerbotton"onclick="startTimer()">テストスタート</button>
+  <div id="countdown"></div>
+
+  <script>
+    const imageElement = document.getElementById('image');
+    const countdownElement = document.getElementById('countdown');
+    let countdownTimer;
+
+    function startTimer() {
+      // 画像を表示
+		timerbotton.style.display = 'none';
+      startCountdown(20); // 20秒のカウントダウンを開始
+
+      // 20秒後に画像を非表示にす
+    }
+
+    function displayImage() {
+      imageElement.style.display = 'block'; // 画像を表示
+      imageElement.src = './text.png';
+    }
+
+    function hideImage() {
+      imageElement.style.display = 'none'; // 画像を非表示
+      imageElement.src = ''; // 画像をクリア
+    }
+
+    function startCountdown(interval) {
+      let timeLeft = interval;
+		displayImage(); 
+      countdownTimer = setInterval(() => {
+        countdownElement.textContent = `残り時間: ${timeLeft} 秒`;
+
+        if (timeLeft <= 0) {
+          clearInterval(countdownTimer);
+			 hideImage();
+			 countdownElement.textContent = "フォームに戻りテストに取り組んだください。"
+        } else {
+          timeLeft--;
+        }
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
