@@ -12,6 +12,9 @@ app.get('/test1', (req, res) => {
 app.get('/test2', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'imagetimer2.html'));
 });
+app.get('/test3', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'imagetimer3.html'));
+});
 // サーバーを指定のポートで起動
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
